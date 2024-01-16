@@ -31,7 +31,7 @@ module.exports.signup = async (req, res, next) => {
         user = new User({ name, email, password: hashedPassword });
         user = await user.save();
     } catch (err) {
-        return console.log(err);
+        return res.status(501).json({ message: "User Already exists! Login Please" });
     }
     if (!user) {
         return res.status(500).json({ message: "Unexpected Error Occured" });
@@ -79,7 +79,7 @@ module.exports.deleteUser = async (req, res, next) => {
         return console.log(err);
     }
     if (!user) {
-        return res.status(500).json({ message: "Something went wrong" });
+        return res.status(200).json({ message: "Something went wrong" });
     }
     return res.status(200).json({ message: "Deleted Successfully" });
 };
@@ -110,5 +110,5 @@ module.exports.login = async (req, res, next) => {
 
     return res
         .status(200)
-        .json({ message: "Login Successfull"});
+        .json({ message: "Login Successfull" });
 };
