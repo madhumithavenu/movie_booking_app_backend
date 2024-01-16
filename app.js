@@ -4,6 +4,7 @@ const dotenv = require('dotenv');
 const userRouter = require('./routes/user_routes.js');
 const adminRouter = require('./routes/admin_routes.js');
 const movieRouter = require('./routes/movie_routes.js');
+const bookingsRouter = require('./routes/booking_routes.js');
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ app.use(express.json());
 app.use("/user",userRouter);
 app.use("/admin",adminRouter);
 app.use("/movie",movieRouter);
+app.use("/booking",bookingsRouter);
 
 
 mongoose.connect(`mongodb+srv://admin:${process.env.MONGODB_PASSWORD}@cluster0.cdpscq1.mongodb.net/?retryWrites=true&w=majority`)
