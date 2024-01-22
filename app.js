@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const userRouter = require('./routes/user_routes.js');
@@ -7,9 +8,9 @@ const movieRouter = require('./routes/movie_routes.js');
 const bookingsRouter = require('./routes/booking_routes.js');
 
 dotenv.config();
-
 const app = express();
 app.use(express.json());
+app.use(cors());
 app.use("/user",userRouter);
 app.use("/admin",adminRouter);
 app.use("/movie",movieRouter);
